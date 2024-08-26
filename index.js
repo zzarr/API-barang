@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const app = express();
 
-// Ubah port ini ke 8000 atau port lain yang tidak digunakan
+
 const port = process.env.PORT || 8000;
 
 app.use(cors());
@@ -39,6 +39,7 @@ app.post('/api/items', (req, res) => {
             return res.status(500).json({ error: err.message });
         }
         res.json({ id: result.insertId, name, price });
+        console.log('data berhasil ditambah');
     });
 });
 
@@ -50,6 +51,7 @@ app.get('/api/items', (req, res) => {
             return res.status(500).json({ error: err.message });
         }
         res.json(results);
+        console.log('data dimbil');
     });
 });
 
@@ -62,6 +64,7 @@ app.get('/api/items/:id', (req, res) => {
             return res.status(500).json({ error: err.message });
         }
         res.json(result[0]);
+        console.log('data berasil diambil');
     });
 });
 
@@ -75,6 +78,7 @@ app.put('/api/items/:id', (req, res) => {
             return res.status(500).json({ error: err.message });
         }
         res.json({ message: 'Data berhasil diperbarui' });
+        console.log('data berasil diupdate');
     });
 });
 
@@ -87,6 +91,7 @@ app.delete('/api/items/:id', (req, res) => {
             return res.status(500).json({ error: err.message });
         }
         res.json({ message: 'Data berhasil dihapus' });
+        console.log('data dengan id '+ id +' berasil dihapus');
     });
 });
 
